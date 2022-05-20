@@ -1,0 +1,340 @@
+body,
+ul,
+li,
+h1,
+h2,
+a {
+  margin: 0;
+  padding: 0;
+  font-family: 'Abril Fatface';
+}
+
+p {
+  font-size: 16px;
+}
+
+header {
+  background-color: whitesmoke;
+  padding: 0px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+header h1 {
+  color: rgb(34, 163, 34);
+  border: none;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 36px;
+  font-style: normal;
+  font-size: 40px;
+  font-family: 'Abril Fatface';
+}
+
+.banner {
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.banner .welcome {
+  background: none;
+  color: white;
+  padding: 10px;
+  font-size: 50px;
+  position: absolute;
+  right: 0;
+  top: 35%;
+}
+
+.banner .welcome span {
+  font-size: 1.4em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+
+}
+
+body {
+  background-color: #f1f1f1;
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 8px -16px;
+}
+
+
+.row,
+.row>.column {
+  padding: 8px;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.content {
+  background-color: white;
+  padding: 10px;
+
+}
+
+nav {
+  background: #e6e1e1;
+  padding: 20px;
+
+}
+
+nav ul {
+  white-space: nowrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+nav li {
+  width: 20%;
+  display: inline-block;
+  font-size: 24px;
+}
+
+nav li a {
+  text-decoration: none;
+  color: #4B4B4B;
+}
+
+nav li a:hover {
+  text-decoration: underline;
+}
+
+nav li a.join {
+  color: #F63232;
+}
+
+main {
+  max-width: 100%;
+  width: 1200px;
+  margin: 80px auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+article h2 {
+  color: #F63232;
+  font-size: 30px;
+}
+
+article p {
+  line-height: 2em;
+  color: #4B4B4B;
+}
+
+article p::first-line {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.images {
+  text-align: center;
+  margin: 80px 0;
+  white-space: nowrap;
+}
+
+.images li {
+  display: inline-block;
+  list-style-type: none;
+  width: 40%;
+  margin: 20px 5%;
+  position: relative;
+}
+
+.images li:hover {
+  top: -4px;
+}
+
+.images li img {
+  max-width: 100%;
+}
+
+section.join {
+  background: #c5a4a4;
+  text-align: center;
+  padding: 5px 20px;
+  color: #4B4B4B;
+}
+
+section.join h2 {
+  font-size: 36px;
+}
+
+form input {
+  margin: 10px 0;
+  padding: 10px 20px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+form input:focus {
+  border: 4px dashed #4B4B4B;
+  outline: none;
+}
+
+form input:valid {
+  border: 2px solid #8e8f8c;
+  text-align: center;
+}
+
+footer {
+  background: rgb(114, 112, 112);
+  color: white;
+  padding: 2px;
+  text-align: center;
+}
+
+/* responsive styles */
+
+@media screen and (max-width: 1400px) {
+
+  .banner .welcome {
+    font-size: 40px;
+  }
+
+}
+
+@media screen and (max-width: 960px) {
+
+  .banner .welcome {
+    font-size: 28px;
+  }
+
+  nav li {
+    font-size: 18px;
+  }
+
+}
+
+@media screen and (max-width: 700px) {
+
+  .banner .welcome {
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+  }
+
+  .banner .welcome br {
+    display: none;
+  }
+
+  .banner .welcome span {
+    font-size: 1em;
+  }
+
+  nav li {
+    font-size: 18px;
+  }
+
+  .images li {
+    width: 100%;
+    display: block;
+    margin: 20px auto;
+  }
+
+}
+
+@media screen and (max-width: 560px) {
+
+  .banner .welcome {
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+  }
+
+  .banner .welcome br {
+    display: none;
+  }
+
+  .banner .welcome span {
+    font-size: 1em;
+  }
+
+  nav li {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+  }
+
+  article h2 {
+    font-size: 36px;
+  }
+
+  header,
+  nav {
+    position: relative;
+    top: 0;
+  }
+
+  /* Content */
+  .content {
+    background-color: white;
+    padding: 10px;
+  }
+
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 900px) {
+    .column {
+      width: 50%;
+    }
+  }
+
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }
+
+
+
+}
