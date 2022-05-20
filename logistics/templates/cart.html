@@ -1,0 +1,1165 @@
+<html lang="en"><head>
+
+    <meta charset="UTF-8">
+    
+  <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+  <meta name="apple-mobile-web-app-title" content="CodePen">
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  
+  <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+  
+  
+    <title>Cart</title>
+    
+    <style>
+/* ONLY FOR NAVIGATION*/
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+:root{
+  --green:#27ae60;
+  --black:#2c2c54;
+}
+
+*{
+  font-family: 'Nunito', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+  outline: none; border:none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+}
+
+*::selection{
+  background:var(--green);
+  color:#fff;
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 6.5rem;
+  scroll-behavior: smooth;
+}
+
+section{
+  padding:2rem 9%;
+}
+
+.btn{
+  display: inline-block;
+  margin-top: 1rem;
+  background:var(--green);
+  color:#fff;
+  padding:.8rem 3rem;
+  font-size: 1.7rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background:var(--black);
+}
+
+.heading{
+  text-align: center;
+  color:var(--black);
+  text-transform: uppercase;
+  padding:1rem;
+  font-size: 3.5rem;
+  padding-bottom: 2rem;
+}
+
+.heading span{
+  color:var(--green);
+  text-transform: uppercase;
+}
+
+.header-1{
+  background:#eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:2rem 9%;
+}
+
+.logo{
+  color:var(--black);
+  font-weight: bolder;
+  font-size: 3rem;
+}
+
+.logo i{
+  padding-right: .5rem;
+  color:var(--green);
+}
+
+.header-1 .search-box-container{
+  display: flex;
+  height:5rem;
+}
+
+.header-1 .search-box-container #search-box{
+  height: 100%;
+  width:100%;
+  padding:1rem;
+  font-size: 2rem;
+  color:#333;
+  border:.1rem solid rgba(0,0,0,.3);
+  text-transform: none;
+}
+
+.header-1 .search-box-container label{
+  height: 100%;
+  width:8rem;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  color:#fff;
+  background:var(--green);
+  text-align: center;
+  cursor: pointer;
+}
+
+.header-1 .search-box-container label:hover{
+  background:var(--black);
+}
+
+.header-2{
+  background:#fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:2rem 9%;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+  position: relative;
+}
+
+.header-2.active{
+  position: fixed;
+  top:0; left: 0; right:0;
+  z-index: 10000;
+}
+
+.header-2 .navbar a{
+  padding:.5rem 1.5rem;
+  font-size: 2rem;
+  border-radius: .5rem;
+  color:var(--black);
+}
+
+.header-2 .navbar a:hover{
+  background:var(--green);
+  color:#fff;
+}
+
+.header-2 .icons a{
+  font-size: 2.5rem;
+  color:var(--black);
+  padding-left: 1rem;
+}
+
+.header-2 .icons a:hover{
+  color:var(--green);
+}
+
+#menu-bar{
+  font-size: 3rem;
+  border-radius: .5rem;
+  border:.1rem solid var(--black);
+  padding:.8rem 1.5rem;
+  color:var(--black);
+  cursor: pointer;
+  display: none;
+}
+
+.home{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home .image{
+  flex:1 1 40rem;
+  padding-top: 5rem;
+}
+
+.home .image img{
+  width:100%;
+}
+
+.home .content{
+  flex:1 1 40rem;
+}
+
+.home .content span{
+  font-size: 3rem;
+  color:#666;
+}
+
+.home .content h3{
+  font-size: 5rem;
+  color:var(--black);
+}
+
+.banner-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap:1.5rem;
+}
+
+.banner-container .banner{
+  flex:1 1 40rem;
+  height: 25rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner-container .banner img{
+  height: 100%;
+  width:100%;
+  object-fit: cover;
+}
+
+.banner-container .banner .content{
+  position: absolute;
+  top:50%; left: 4%;
+  transform: translateY(-50%);
+}
+
+.banner-container .banner .content h3{
+  font-size: 3rem;
+  color:var(--black);
+}
+
+.banner-container .banner .content p{
+  font-size: 2rem;
+  color:#333;
+}
+
+.banner-container .banner:hover img{
+  transform:scale(1.2) rotate(-5deg);
+}
+
+.category .box-container{
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+}
+
+.category .box-container .box{
+  border:.1rem solid rgba(0,0,0,.3);
+  border-radius: .5rem;
+  text-align: center;
+  padding:2rem;
+  flex:1 1 25rem;
+}
+
+.category .box-container .box img{
+  width: 20rem;
+  margin:.5rem 0;
+}
+
+.category .box-container .box h3{
+  font-size: 3.5rem;
+  color:var(--black);
+}
+
+.category .box-container .box p{
+  font-size: 2rem;
+  color:#666;
+  padding:.5rem 0;
+}
+
+.category .box-container .box .btn{
+  display: block;
+}
+
+.product .box-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap:1.5rem;
+}
+
+.product .box-container .box{
+  flex:1 1 30rem;
+  text-align: center;
+  padding:2rem;
+  border:.1rem solid rgba(0,0,0,.3);
+  border-radius: .5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.product .box-container .box img{
+  height: 20rem;
+}
+
+.product .box-container .box .discount{
+  position: absolute;
+  top:1rem; left: 1rem;
+  background:rgba(0,255,0,.1);
+  color:var(--green);
+  padding:.7rem 1rem;
+  font-size: 2rem;
+}
+
+.product .box-container .box .icons{
+  position: absolute;
+  top:.5rem; right:-6rem;
+}
+
+.product .box-container .box:hover .icons{
+  right:1rem;
+}
+
+.product .box-container .box .icons a{
+  display: block;
+  height:4.5rem;
+  width:4.5rem;
+  line-height: 4.5rem;
+  font-size: 1.7rem;
+  color:var(--black);
+  background:rgba(0,0,0,.05);
+  border-radius: 50%;
+  margin-top: .7rem;
+}
+
+.product .box-container .box .icons a:hover{
+  background:var(--green);
+  color:#fff;
+}
+
+.product .box-container .box h3{
+  color:var(--black);
+  font-size: 2.5rem;
+}
+
+.product .box-container .box .stars i{
+  padding:1rem .1rem;
+  font-size: 1.7rem;
+  color:gold;
+}
+
+.product .box-container .box .price{
+  font-size: 2rem;
+  color:#333;
+  padding:.5rem 0;
+}
+
+.product .box-container .box .price span{
+  font-size: 1.5rem;
+  color:#999;
+  text-decoration: line-through;
+}
+
+.product .box-container .box .quantity{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: .5rem;
+}
+
+.product .box-container .box .quantity span{
+  padding:0 .7rem;
+  font-size: 1.7rem;
+}
+
+.product .box-container .box .quantity input{
+  border:.1rem solid rgba(0,0,0,.3);
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color:var(--black);
+  padding:.5rem;
+  background:rgba(0,0,0,.05);
+}
+
+.product .box-container .box .btn{
+  display: block;
+}
+
+.deal{
+  background:url(../images/deal-bg.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.deal .content{
+  max-width: 50rem;
+}
+
+.deal .content .title{
+  font-size: 4rem;
+  color:var(--black);
+}
+
+.deal .content p{
+  font-size: 1.7rem;
+  padding:1rem 0;
+  color:#333;
+}
+
+.deal .content .count-down{
+  display: flex;
+  gap:1rem;
+  padding:.5rem 0;
+}
+
+.deal .content .count-down .box{
+  width:9rem;
+  text-align: center;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+  border:.1rem solid rgba(0,0,0,.3);
+}
+
+.deal .content .count-down .box h3{
+  color:var(--black);
+  background:#fff;
+  height: 7rem;
+  line-height: 7rem;
+  width:100%;
+  font-size: 5rem;
+}
+
+.deal .content .count-down .box span{
+  display: block;
+  background:var(--black);
+  color:#fff;
+  width:100%;
+  padding:.5rem;
+  font-size: 2rem;
+}
+
+.contact form{
+  text-align: center;
+  padding:2rem;
+  border:.1rem solid rgba(0,0,0,.3);
+}
+
+.contact form .inputBox{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact form .inputBox input, .contact form textarea{
+  padding:1rem;
+  font-size: 1.7rem;
+  background:#f7f7f7;
+  text-transform: none;
+  margin:1rem 0;
+  border:.1rem solid rgba(0,0,0,.3);
+  width: 49%;
+}
+
+.contact form textarea{
+  height: 20rem;
+  resize: none;
+  width: 100%;
+}
+
+.newsletter{
+  background:url(../images/newsletter-bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding:5rem 2rem;
+}
+
+.newsletter h3{
+  font-size: 3rem;
+  color:var(--black);
+}
+
+.newsletter form{
+  max-width: 55rem;
+  display: flex;
+  align-items: center;
+  margin:1rem auto;
+  padding:1.5rem;
+  background:rgba(0,0,0,.1);
+}
+
+.newsletter form .box{
+  width:100%;
+  padding:.7rem 1.5rem;
+  font-size: 1.7rem;
+  color:#333;
+  text-transform: none;
+}
+
+.newsletter form .btn{
+  margin-top: 0;
+}
+
+.footer .box-container{
+  display: flex;
+  gap:1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer .box-container .box{
+  padding:1rem 0;
+  flex:1 1 25rem;
+}
+
+.footer .box-container .box .share a{
+  padding:0;
+  height:4rem;
+  width:4rem;
+  line-height: 4rem;
+  text-align: center;
+}
+
+.footer .box-container .box h3{
+  font-size: 2.5rem;
+  color:var(--black);
+}
+
+.footer .box-container .box p{
+  font-size: 1.3rem;
+  color:#666;
+  padding:.7rem 0;
+}
+
+.footer .box-container .box .links{
+  padding:1rem 0;
+}
+
+.footer .box-container .box .links a{
+  display: block;
+  padding:.5rem 0;
+  font-size: 1.7rem;
+  color:#333;
+}
+
+.footer .box-container .box .links a:hover{
+  text-decoration: underline;
+  color:var(--green);
+}
+
+.footer .credit{
+  padding:2.5rem 1rem;
+  border-top: .1rem solid rgba(0,0,0,.1);
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.footer .credit span{
+  color:var(--green);
+}
+
+
+/* media queries  */
+
+@media(max-width:1200px){
+
+  html{
+    font-size: 55%;
+  }
+
+}
+
+@media(max-width:991px){
+
+  .header-1,
+  .header-2{
+    padding:2rem;
+  }
+
+  section{
+    padding:2rem;
+  }
+
+}
+
+@media(max-width:768px){
+
+  #menu-bar{
+    display: initial;
+  }
+
+  .header-2 .navbar{
+    position: absolute;
+    top:100%; left: 0; right:0;
+    background:var(--black);
+    padding:1rem 2rem;
+    display: none;
+  }
+  register
+  }
+
+  .header-2 .navbar a{
+    font-size: 2.5rem;
+    display: block;
+    text-align: center;
+    background:#fff;
+    padding:1rem;
+    margin:1.5rem 0;
+  }
+
+  .home .content{
+    text-align: center;
+  }
+
+  .home .content h3{
+    font-size: 4rem;
+  }
+
+  .deal{
+    background-position: left;
+  }
+
+  .deal .content{
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .deal .content .count-down{
+    justify-content: center;
+  }
+
+  .contact form .inputBox input{
+    width:100%;
+  }
+
+  .newsletter h3{
+    font-size: 2.2rem;
+  }
+
+}
+
+@media(max-width:450px){
+
+  html{
+    font-size: 50%;
+  }
+
+  .heading{
+    font-size: 3rem;
+  }
+
+  .header-1{
+    flex-flow: column;
+  }
+
+  .header-1 .search-box-container{
+    width:100%;
+    margin-top: 2rem;
+  }
+
+  .logo{
+    font-size: 4rem;
+  }
+
+  .deal .content .count-down .box h3{
+    font-size: 4rem;
+  }
+
+  .deal .content .count-down .box span{
+    font-size: 1.5rem;
+  }
+
+}
+
+
+
+
+
+
+/*END OF NAVBAR STYLE*/
+
+  /* (A) ENTIRE PAGE */
+  #cart-wrap {
+    font-family: arial, sans-serif;
+    display: grid;
+    grid-template-columns: 70% 60%;
+    margin: 250px ;
+    max-width: 1200px;
+  }
+  input.cart, button.cart {
+    font-weight: bold;
+    font-size: 1em;
+    padding: 10px; 
+    border: none;
+    color: #fff;
+    background: #32CD32;
+    cursor: pointer;
+  }
+  
+  /* (B) PRODUCTS LIST */
+  #cart-products {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  .p-item {
+    padding: 10px;
+    border: 1px solid #aaa;
+    text-align: center;
+  }
+  .p-name {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  .p-img { max-width: 180px; }
+  .p-desc {
+    color: #777;
+    font-size: 0.9em;
+    line-height: 1.5em;
+  }
+  .p-price {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 10px 0;
+  }
+  input.p-add { width: 80%; }
+  
+  /* (D) CURRENT SHOPPING CART */
+  #cart-items {
+    padding: 10px;
+    background: #f1f1f1;
+  }
+  .c-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .c-name {
+    width: 100%;
+    font-size: 1.3em;
+    line-height: 1.5em;
+  }
+  .c-del { width: 20%; }
+  .c-qty {
+    width: 75%;
+    font-size: 1em;
+  }
+  input.c-empty, input.c-checkout {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  /* (E) RESPONSIVE */
+  @media screen AND (max-width: 768px) {
+    #cart-wrap { grid-template-columns: 60% 40%; }
+    #cart-products { grid-template-columns: auto; }
+  }
+  </style>
+  
+    <script>
+    window.console = window.console || function(t) {};
+  </script>
+  
+    
+    
+    <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage("resize", "*");
+    }
+  </script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  </head>
+  
+  <body translate="no" style="background-color: #F0FFFF;">
+
+<!--Navigation Bar-->
+    <header>
+
+        <div class="header-1">
+    
+            <a href="#" class="logo"><i class="fas fa-truck"></i>Logistics</a>
+    
+            <form action="" class="search-box-container">
+                <input type="search" id="search-box" placeholder="search here...">
+                <label for="search-box" class="fas fa-search"></label>
+            </form>
+    
+        </div>
+    
+        <div class="header-2">
+    
+            <div id="menu-bar" class="fas fa-bars"></div>
+    
+            <nav class="navbar">
+                <a href="/dashboard">home</a>
+                <a href="#category">category</a>
+                <a href="#product">product</a>
+                <a href="#deal">deal</a>
+                <a href="#contact">contact</a>
+            </nav>
+    
+            <div class="icons">
+                <a href="/cart" class="fas fa-shopping-cart"></a>
+                <a href="/track" class="fa fa-map-marker"></a>
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-user-circle"></a>
+                
+            </div>
+    
+        </div>
+    
+    </header>
+
+    <!--end of navbar-->
+
+   <h1 style="position:relative;left: 750px;top:50px;color:#32DC32;">Here You can edit your Cart option!</h1>
+    
+  
+    
+      <title>Cart</title>
+  
+     
+    
+      <div id="cart-wrap">
+        <!-- (B) PRODUCTS LIST -->
+        <div id="cart-products" style="margin-top: -150px; font-size: small;">
+            <div class="p-item">
+                <img src="static/sofa.jpeg" class="p-img">
+                <div class="p-name">Sofa Couch</div>
+                <div class="p-desc">Greatest place to sit.</div>
+                <div class="p-price">$2034</div>
+                <input type="button" value="Add to Cart" class="cart p-add" data-id="123">
+            </div>
+            <div class="p-item">
+                <img src="images/dummy-pdt-b.jpg" class="p-img">
+                <div class="p-name">MokBook Rookie</div>
+                <div class="p-desc">Unsatiable its possession nor off.</div>
+                <div class="p-price">$1247</div>
+                <input type="button" value="Add to Cart" class="cart p-add" data-id="124">
+            </div>
+            <div class="p-item">
+                <img src="images/dummy-pdt-a.jpg" class="p-img">
+                <div class="p-name">iPong Max</div>
+                <div class="p-desc">All difficulty unreserved the solicitude.</div>
+                <div class="p-price">$675</div>
+                <input type="button" value="Add to Cart" class="cart p-add" data-id="125">
+            </div>
+            <div class="p-item"><img src="images/dummy-pdt-a.jpg" class="p-img">
+                <div class="p-name">iTab Pok</div>
+                <div class="p-desc">Had judgment out property the supplied. </div>
+                <div class="p-price">$842</div>
+                <input type="button" value="Add to Cart" class="cart p-add" data-id="126">
+            </div>
+        </div>
+  
+        <!-- (C) CURRENT CART -->
+        <div id="cart-items" style="margin-top: -150px; font-size: small;">
+            <div class="c-item">
+                <div class="c-name">MokBook Thicc</div>
+                <input type="button" value="X" data-id="123" class="c-del cart">
+                <input type="number" data-id="123" class="c-qty">
+            </div>
+            <div class="c-item">
+                <div class="c-name">MokBook Rookie</div>
+                <input type="button" value="X" data-id="124" class="c-del cart">
+                <input type="number" data-id="124" class="c-qty">
+            </div>
+            <input type="button" value="Empty" class="c-empty cart">
+           <input type="button" value="Checkout - $3281" class="c-checkout cart">
+        </div>
+      </div>
+    
+  
+      <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+  
+    
+        <script id="rendered-js">
+  /*
+  
+  PRODUCTS
+  
+  */
+  
+  // DUMMY PRODUCTS (PRODUCT ID : DATA)
+  var products = {
+    119: {
+        name: "Nintendo Switch",
+        desc: "Multiplayer",
+        img: "static/apple.png",
+        price: 252.00 },
+
+    120: {
+        name: "Ek kahani..",
+        desc: "Horror & Thriller Short Stories.",
+        img: "static/apple.png",
+        price: 3.90},
+
+    121: {
+        name: "Legos",
+        desc: "Only for kids under 10.",
+        img: "static/apple.png",
+        price: 15.50 },
+
+    122: {
+        name: "UltraWide Monitor OLED",
+        desc: "Welcome to Cinematic Dimension feels like IMAX.",
+        img: "static/apple.png",
+        price: 196.99 },
+
+    123: {
+      name: "Sofa Couch",
+      desc: "Greatest properly off ham exercise all.",
+      img: "static/sofa.jpeg",
+      price: 498.00 },
+  
+    124: {
+      name: "RC Helicopter",
+      desc: "Aasman ke unchaiyo pe..",
+      img: "dummy-pdt-b.jpg",
+      price: 44.98 },
+  
+    125: {
+      name: "Lloyd AC",
+      desc: "Room mein kohra hi kohra..",
+      img: "dummy-pdt-a.jpg",
+      price: 419.98 },
+  
+    126: {
+      name: "Earphone",
+      desc: "Bs bajna chahiye gaana ",
+      img: "static/ear.jpeg",
+      price: 5.50 } };
+  
+  
+  
+  /*
+  
+  
+  CART
+  
+  
+  */
+  
+  var cart = {
+    // (A) PROPERTIES
+    hPdt: null, // HTML products list
+    hItems: null, // HTML current cart
+    items: {}, // Current items in cart
+  
+    // (B) LOCALSTORAGE CART
+    // (B1) SAVE CURRENT CART INTO LOCALSTORAGE
+    save: function () {
+      localStorage.setItem("cart", JSON.stringify(cart.items));
+    },
+  
+    // (B2) LOAD CART FROM LOCALSTORAGE
+    load: function () {
+      cart.items = localStorage.getItem("cart");
+      if (cart.items == null) {cart.items = {};} else
+      {cart.items = JSON.parse(cart.items);}
+    },
+  
+    // (B3) EMPTY ENTIRE CART
+    nuke: function () {
+      if (confirm("Empty cart?")) {
+        cart.items = {};
+        localStorage.removeItem("cart");
+        cart.list();
+      }
+    },
+  
+    // (C) INITIALIZE
+    init: function () {
+      // (C1) GET HTML ELEMENTS
+      cart.hPdt = document.getElementById("cart-products");
+      cart.hItems = document.getElementById("cart-items");
+  
+      // (C2) DRAW PRODUCTS LIST
+      cart.hPdt.innerHTML = "";
+      let p, item, part;
+      for (let id in products) {
+        // WRAPPER
+        p = products[id];
+        item = document.createElement("div");
+        item.className = "p-item";
+        cart.hPdt.appendChild(item);
+  
+        // PRODUCT IMAGE
+        part = document.createElement("img");
+        part.src = "static/" + p.img;
+        part.className = "p-img";
+        item.appendChild(part);
+  
+        // PRODUCT NAME
+        part = document.createElement("div");
+        part.innerHTML = p.name;
+        part.className = "p-name";
+        item.appendChild(part);
+  
+        // PRODUCT DESCRIPTION
+        part = document.createElement("div");
+        part.innerHTML = p.desc;
+        part.className = "p-desc";
+        item.appendChild(part);
+  
+        // PRODUCT PRICE
+        part = document.createElement("div");
+        part.innerHTML = "$" + p.price;
+        part.className = "p-price";
+        item.appendChild(part);
+  
+        // ADD TO CART
+        part = document.createElement("input");
+        part.type = "button";
+        part.value = "Add to Cart";
+        part.className = "cart p-add";
+        part.onclick = cart.add;
+        part.dataset.id = id;
+        item.appendChild(part);
+      }
+  
+      // (C3) LOAD CART FROM PREVIOUS SESSION
+      cart.load();
+  
+      // (C4) LIST CURRENT CART ITEMS
+      cart.list();
+    },
+  
+    // (D) LIST CURRENT CART ITEMS (IN HTML)
+    list: function () {
+      // (D1) RESET
+      cart.hItems.innerHTML = "";
+      let item, part, pdt;
+      let empty = true;
+      for (let key in cart.items) {
+        if (cart.items.hasOwnProperty(key)) {empty = false;break;}
+      }
+  
+      // (D2) CART IS EMPTY
+      if (empty) {
+        item = document.createElement("div");
+        item.innerHTML = "Cart is empty";
+        cart.hItems.appendChild(item);
+      }
+  
+      // (D3) CART IS NOT EMPTY - LIST ITEMS
+      else {
+          let p,total = 0,subtotal = 0;
+          for (let id in cart.items) {
+            // ITEM
+            p = products[id];
+            item = document.createElement("div");
+            item.className = "c-item";
+            cart.hItems.appendChild(item);
+  
+            // NAME
+            part = document.createElement("div");
+            part.innerHTML = p.name;
+            part.className = "c-name";
+            item.appendChild(part);
+  
+            // REMOVE
+            part = document.createElement("input");
+            part.type = "button";
+            part.value = "X";
+            part.dataset.id = id;
+            part.className = "c-del cart";
+            part.addEventListener("click", cart.remove);
+            item.appendChild(part);
+  
+            // QUANTITY
+            part = document.createElement("input");
+            part.type = "number";
+            part.value = cart.items[id];
+            part.dataset.id = id;
+            part.className = "c-qty";
+            part.addEventListener("change", cart.change);
+            item.appendChild(part);
+  
+            // SUBTOTAL
+            subtotal = cart.items[id] * p.price;
+            total += subtotal;
+          }
+  
+          // EMPTY BUTTONS
+          item = document.createElement("input");
+          item.type = "button";
+          item.value = "Empty";
+          item.addEventListener("click", cart.nuke);
+          item.className = "c-empty cart";
+          cart.hItems.appendChild(item);
+  
+          // CHECKOUT BUTTONS
+          item = document.createElement("input");
+          item.type = "button";
+          item.value = "Checkout - " + "$" + total;
+          item.addEventListener("click", cart.checkout);
+          item.className = "c-checkout cart";
+          cart.hItems.appendChild(item);
+        }
+    },
+  
+    // (E) ADD ITEM INTO CART
+    add: function () {
+      if (cart.items[this.dataset.id] == undefined) {
+        cart.items[this.dataset.id] = 1;
+      } else {
+        cart.items[this.dataset.id]++;
+      }
+      cart.save();
+      cart.list();
+    },
+  
+    // (F) CHANGE QUANTITY
+    change: function () {
+      if (this.value == 0) {
+        delete cart.items[this.dataset.id];
+      } else {
+        cart.items[this.dataset.id] = this.value;
+      }
+      cart.save();
+      cart.list();
+    },
+  
+    // (G) REMOVE ITEM FROM CART
+    remove: function () {
+      delete cart.items[this.dataset.id];
+      cart.save();
+      cart.list();
+    },
+  
+    // (H) CHECKOUT
+    checkout: function () {
+      window.location.href="/checkout";
+      // SEND DATA TO SERVER
+      // CHECKS
+      // SEND AN EMAIL
+      // RECORD TO DATABASE
+      // PAYMENT
+      // WHATEVER IS REQUIRED
+      
+  
+      /*
+      var data = new FormData();
+      data.append('cart', JSON.stringify(cart.items));
+      data.append('products', JSON.stringify(products));
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "SERVER-SCRIPT");
+      xhr.onload = function(){ ... };
+      xhr.send(data);
+      */
+    } };
+  
+  window.addEventListener("DOMContentLoaded", cart.init);
+  //# sourceURL=pen.js
+      </script>
+  
+    
+  
+  
+  
+  
+   
+  </body></html>
