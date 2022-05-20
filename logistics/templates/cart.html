@@ -11,7 +11,8 @@
   
   
     <title>Cart</title>
-    
+
+<!--CSS script for Navigation-->
     <style>
 /* ONLY FOR NAVIGATION*/
 
@@ -669,14 +670,12 @@ section{
 
 }
 
-
-
-
-
-
 /*END OF NAVBAR STYLE*/
 
-  /* (A) ENTIRE PAGE */
+ 
+/* Start of Cart functionality CSS script*/
+
+/* (A) ENTIRE PAGE */
   #cart-wrap {
     font-family: arial, sans-serif;
     display: grid;
@@ -1133,33 +1132,11 @@ section{
     // (H) CHECKOUT
     checkout: function () {
       window.location.href="/checkout";
-      // SEND DATA TO SERVER
-      // CHECKS
-      // SEND AN EMAIL
-      // RECORD TO DATABASE
-      // PAYMENT
-      // WHATEVER IS REQUIRED
-      
-  
-      /*
-      var data = new FormData();
-      data.append('cart', JSON.stringify(cart.items));
-      data.append('products', JSON.stringify(products));
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "SERVER-SCRIPT");
-      xhr.onload = function(){ ... };
-      xhr.send(data);
-      */
+ 
     } };
   
   window.addEventListener("DOMContentLoaded", cart.init);
   //# sourceURL=pen.js
       </script>
   
-    
-  
-  
-  
-  
-   
-  </body></html>
+ </body></html>
