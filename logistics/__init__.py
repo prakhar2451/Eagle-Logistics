@@ -10,5 +10,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' # For creating t
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
+login_manager.login_view = 'login'
 
 from logistics import routes
