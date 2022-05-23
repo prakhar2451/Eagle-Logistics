@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  
+
+  <!--Login Form Container-->
   <div class="container">
     <input type="checkbox" id="flip">
     <div class="cover">
@@ -25,6 +26,8 @@
         <img class="backImg" src="static/image.jpg" alt="">
       </div>
     </div>
+    
+    <!--Login Form-->
     <div class="forms">
         <div class="form-content">
         <div class="login-form">
@@ -43,6 +46,8 @@
               <div class="button input-box">
                 <input type="submit" value="Submit">
               </div>
+              
+              <!--Redirect to signup page-->
               <div class="text sign-up-text">Don't have an account? <a href="{{url_for('register')}}">Signup Now</a></div>
             </div>
       </form>
